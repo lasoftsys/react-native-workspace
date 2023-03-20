@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* @font-face {
+    font-family: "ADELIA";
+    src: url("./assets/fonts//sf-ui-display/");
+  } */
