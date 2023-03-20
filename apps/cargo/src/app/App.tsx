@@ -5,6 +5,7 @@ import { styled } from 'nativewind';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import {SafeAreaProvider} from 'react-native-safe-area-context'
+import RootNavigator from '../navigation/root.navigator';
 
 
 
@@ -38,13 +39,8 @@ export const App = () => {
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <StatusBar style="auto" />
-      <StyledView className="h-screen items-center justify-center bg-secondary">
-      <StyledText>
-        Hey
-      </StyledText>
-      </StyledView>
+      <RootNavigator/>
     </SafeAreaProvider>
-  
   );
 };
 export default App;
