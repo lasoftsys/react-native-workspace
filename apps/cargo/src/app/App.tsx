@@ -1,18 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useCallback } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, LogBox } from 'react-native';
 import { styled } from 'nativewind';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 import RootNavigator from '../navigation/root.navigator';
 
-
-
+LogBox.ignoreAllLogs(true);
 SplashScreen.preventAutoHideAsync();
-
-const StyledView= styled(View)
-const StyledText= styled(Text,'text-xl')
 
 export const App = () => {
   const [fontsLoaded] = useFonts({

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const VerifyOTP = () => {
+const Payment = () => {
   return (
     <View>
-      <Text>VerifyOTP</Text>
+      <Text>Payment</Text>
     </View>
   );
 };
 
-export default VerifyOTP;
+export default Payment;
