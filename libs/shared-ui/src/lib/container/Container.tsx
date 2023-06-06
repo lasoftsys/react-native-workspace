@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components/native';
 
 /* eslint-disable-next-line */
@@ -10,6 +10,7 @@ type ContainerProps = {
   space?: boolean;
   center?: boolean;
   middle?: boolean;
+  wrap?: boolean;
   no_wrap?: boolean;
   // children?: ReactNode;
   customStyles?: React.CSSProperties;
@@ -18,50 +19,51 @@ type ContainerProps = {
 export const Container = styled.View<ContainerProps>`
   display: flex;
   flex-direction: column;
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : 'transparent')};
+  background-color: ${({ bgColor }: ContainerProps) =>
+    bgColor ? bgColor : 'transparent'};
 
-  ${({ flex }) =>
+  ${({ flex }: ContainerProps) =>
     flex &&
     css`
       flex: ${flex};
     `};
-  ${({ row }) =>
+  ${({ row }: ContainerProps) =>
     row &&
     css`
       flex-direction: row;
     `};
-  ${({ column }) =>
+  ${({ column }: ContainerProps) =>
     column &&
     css`
       flex-direction: column;
     `};
-  ${({ space }) =>
+  ${({ space }: ContainerProps) =>
     space &&
     css`
       justify-content: ${space};
     `};
-  ${({ center }) =>
+  ${({ center }: ContainerProps) =>
     center &&
     css`
       align-items: center;
     `};
-  ${({ wrap }) =>
+  ${({ wrap }: ContainerProps) =>
     wrap &&
     css`
       flex-wrap: wrap;
     `};
-  ${({ no_wrap }) =>
+  ${({ no_wrap }: ContainerProps) =>
     no_wrap &&
     css`
       flex-wrap: no-wrap;
     `};
-  ${({ middle }) =>
+  ${({ middle }: ContainerProps) =>
     middle &&
     css`
       justify-content: center;
     `};
 
-  ${(props) => props.customStyles};
+  ${(props: ContainerProps) => props.customStyles};
 `;
 
 export default Container;

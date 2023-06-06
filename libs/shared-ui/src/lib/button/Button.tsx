@@ -1,4 +1,5 @@
-import { Children, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
+import { GestureResponderEvent } from 'react-native';
 import TouchableScale from 'react-native-touchable-scale';
 import styled from 'styled-components/native';
 
@@ -7,6 +8,8 @@ type ButtonProps = {
   bgColor?: string;
   br?: number;
   children: ReactNode;
+  onPress(event: GestureResponderEvent): void;
+  className?: string;
   customStyles?: React.CSSProperties;
 };
 
@@ -19,14 +22,15 @@ export const StyledButton = styled(TouchableScale)<ButtonProps>`
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : 'transparent')};
+  background-color: ${({ bgColor }: ButtonProps) =>
+    bgColor ? bgColor : 'transparent'};
   min-height: 25px;
-  border-radius: ${({ br }) => (br ? `${br}px` : `0px`)};
+  border-radius: ${({ br }: ButtonProps) => (br ? `${br}px` : `0px`)};
 
-  ${(props) => props.customStyles};
+  ${(props: ButtonProps) => props.customStyles};
 `;
 
-export function Button(props: ButtonProps) {
+export const Button: FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <StyledButton
       {...props}
@@ -35,9 +39,9 @@ export function Button(props: ButtonProps) {
       friction={7}
       useNativeDriver
     >
-      {props.children}
+      {children}
     </StyledButton>
   );
-}
+};
 
 export default Button;
