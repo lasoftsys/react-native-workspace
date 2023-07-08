@@ -17,6 +17,7 @@ type InputProps = {
   number?: string;
   email?: string;
   phone?: number;
+  placeholder?: string
 };
 
 const Wrapper = styled.View<InputProps>`
@@ -30,8 +31,7 @@ const InputWrapper = styled(View)`
   flex-direction: row;
   height: 45px;
   background-color: ${({ bgColor }: InputProps) =>
-    bgColor ? bgColor : '#181920'};
-  border-radius: '5px';
+    bgColor ? bgColor : '#fff'};
   ${(props: InputProps) => props.inputWrapperStyles};
 `;
 
@@ -87,10 +87,10 @@ export function Input(
   const inputType = email
     ? 'email-address'
     : number
-    ? 'numeric'
-    : phone
-    ? 'phone-pad'
-    : 'default';
+      ? 'numeric'
+      : phone
+        ? 'phone-pad'
+        : 'default';
 
   return (
     <Wrapper wrapperStyles={wrapperStyles}>

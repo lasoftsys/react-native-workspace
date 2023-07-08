@@ -1,5 +1,12 @@
 {
   "singleQuote": true,
+  "printWidth": 40,
+  "useTabs": true,
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "bracketSpacing": false,
+  "semi": true,
+  "trailingComma": "none",
   "[typescriptreact]": {
     "editor.formatOnSave": true
   }

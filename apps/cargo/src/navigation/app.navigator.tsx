@@ -18,7 +18,9 @@ export const AppNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {},
+        cardStyle: {
+          backgroundColor: '#F8F8F8'
+        },
       }}
     >
       <Stack.Screen name="auth_stack" component={AuthStack} />

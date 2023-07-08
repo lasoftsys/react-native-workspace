@@ -29,11 +29,13 @@ export const AuthStack = () => {
       }}
     >
       <Stack.Screen name="welcome" component={Welcome} />
-      <Stack.Screen name="login" component={Login} />
-      <Stack.Screen name="register" component={Register} />
-      <Stack.Screen name="select_country" component={SelectCountry} />
-      <Stack.Screen name="reset_password" component={ResetPassword} />
-      <Stack.Screen name="verify" component={VerifyOTP} />
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="login" component={Login} />
+        <Stack.Screen name="register" component={Register} />
+        <Stack.Screen name="select_country" component={SelectCountry} />
+        <Stack.Screen name="reset_password" component={ResetPassword} />
+        <Stack.Screen name="verify" component={VerifyOTP} />
+      </Stack.Group>
       <Stack.Screen name="enable_location" component={LocationServices} />
     </Stack.Navigator>
   );
