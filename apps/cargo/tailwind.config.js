@@ -20,6 +20,7 @@ module.exports = {
         dark: '#222B45',
         grey: '#E3E8F2',
       },
+      fontFamily:{'nunito':['nunito','sans-serif']},
     },
   },
   plugins: [],

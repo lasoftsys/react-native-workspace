@@ -2,7 +2,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AuthStack } from './auth.stack';
 import { DrawerNavigator } from './drawer.navigator';
 
-const Stack = createStackNavigator();
+
+/**
+ * Type for the App stack navigator
+ */
+export type AppNavigatorParamList = {
+  auth_stack: undefined;
+  main_stack: undefined;
+}
+
+const Stack = createStackNavigator<AppNavigatorParamList>();
 
 export const AppNavigator = () => {
   return (
