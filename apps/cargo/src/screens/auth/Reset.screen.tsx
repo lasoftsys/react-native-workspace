@@ -1,20 +1,13 @@
 /* eslint-disable react/style-prop-object */
-import { Button, Container, Input } from '@shared-ui';
-import React from 'react';
-import { Image, KeyboardAvoidingView, StyleSheet, Text, Platform } from 'react-native';
-import { AuthStackParamList } from '../../navigation/auth.stack';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { ifIphoneX } from 'react-native-iphone-x-helper'
-
-/**
- * 
- * Types for the login screen navigator
- */
-type ResetScreenProp = StackNavigationProp<AuthStackParamList>
+import { Button, Container, Input } from '@shared-ui';
+import { AuthScreensProps } from '@utils/cargo';
+import React from 'react';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text } from 'react-native';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const ResetPassword = () => {
-  const navigation = useNavigation<ResetScreenProp>()
+  const navigation = useNavigation<AuthScreensProps>()
   return (
     <Container
       flex={1}

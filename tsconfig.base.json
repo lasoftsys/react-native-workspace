@@ -1,23 +1,31 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "noImplicitAny": false,
-    "paths": {
-      "@shared-ui": ["libs/shared-ui/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": true,
+		"target": "es2015",
+		"module": "esnext",
+		"lib": ["es2017", "dom"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"noImplicitAny": false,
+		"paths": {
+			"@components/cargo": [
+				"libs/cargo/components/src/index.ts"
+			],
+			"@shared-ui": [
+				"libs/shared-ui/src/index.ts"
+			],
+			"@utils/cargo": [
+				"libs/cargo/util-interfaces/src/index.ts"
+			]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
 }

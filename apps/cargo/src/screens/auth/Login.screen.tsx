@@ -1,27 +1,19 @@
 /* eslint-disable react/style-prop-object */
-import { Button, Container, Input } from '@shared-ui';
-import React from 'react';
-import { Image, KeyboardAvoidingView, StyleSheet, Text, Platform } from 'react-native';
-import { AuthStackParamList } from '../../navigation/auth.stack';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { ifIphoneX } from 'react-native-iphone-x-helper'
+import { Button, Container, Input } from '@shared-ui';
+import { AuthScreensProps } from '@utils/cargo';
+import React from 'react';
+import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text } from 'react-native';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
-/**
- * 
- * Types for the login screen navigator
- */
-type LoginScreenProp = StackNavigationProp<AuthStackParamList>
 
 const Login = () => {
-  const navigation = useNavigation<LoginScreenProp>()
+  const navigation = useNavigation<AuthScreensProps>()
   return (
     <Container
       flex={1}
     >
       <Container className='absolute top-2 w-12 h-1.5 self-center bg-gray-700 rounded-md mt-1 z-10' />
-
-
       <Container flex={0.2} column className='justify-end px-5 pb-3 '>
         <Text className='text-xl font-bold font-nunito text-dark mb-1.5'>Welcome back, Guy!</Text>
         <Text className='text-sm font-medium font-nunito text-gray-500'>Sign in to your account</Text>

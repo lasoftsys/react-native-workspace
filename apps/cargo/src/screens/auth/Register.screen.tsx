@@ -1,26 +1,40 @@
 /* eslint-disable react/style-prop-object */
-import { Button, Container, Input } from '@shared-ui';
-import React from 'react';
-import { Image, KeyboardAvoidingView, StyleSheet, Text, Platform } from 'react-native';
-import { AuthStackParamList } from '../../navigation/auth.stack';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { ifIphoneX } from 'react-native-iphone-x-helper'
+import { Button, Container, Input } from '@shared-ui';
+import { AuthScreensProps } from '@utils/cargo';
+import React, { useState } from 'react';
+import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text } from 'react-native';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
-/**
- * 
- * Types for the register screen navigator
- */
-type RegisterScreenProp = StackNavigationProp<AuthStackParamList>
+
+type CodeProps = {
+  country: {
+    code?: string
+  };
+  setCountry?: () => void
+}
+
+const CountryCode = ({ country, setCountry }: CodeProps) => {
+  const navigation = useNavigation<AuthScreensProps>()
+  return (
+    <Button onPress={() => navigation.navigate('select_country')}
+      className='flex-row justify-center pt-0 pb-0' >
+      {/* <Image source={require('../../../assets/icons/apple.png')} style={{ height: 12, width: 12 }} /> */}
+      <Text className='text-dark font-medium text-sm mx-1'>+250</Text>
+      <FontAwesome name="angle-down" size={15} color="black" />
+    </Button>
+  )
+}
 
 const Register = () => {
-  const navigation = useNavigation<RegisterScreenProp>()
+  const navigation = useNavigation<AuthScreensProps>()
+  const [country, setCountry] = useState({ code: '+250' })
   return (
     <Container
       flex={1}
     >
       <Container className='absolute top-2 w-12 h-1.5 self-center bg-gray-700 rounded-md mt-1 z-10' />
-
 
       <Container flex={0.2} column className='justify-end px-5 pb-3 '>
         <Text className='text-xl font-bold font-nunito text-dark mb-1.5'>Create your account</Text>
@@ -54,10 +68,11 @@ const Register = () => {
           />
           <Input
             placeholder='Mobile number'
-            inputWrapperStyles={styles.inputWrapperStyles}
+            inputWrapperStyles={{ ...styles.inputWrapperStyles }}
             inputStyles={styles.inputStyles}
             wrapperStyles={{ ...styles.wrapperStyles, marginBottom: 20 }}
             phone
+            icon={<CountryCode country={country} />}
           />
           <Input
             placeholder='Enter your password'
@@ -126,6 +141,7 @@ const Register = () => {
     </Container>
   );
 };
+
 
 export default Register;
 const styles = StyleSheet.create({
