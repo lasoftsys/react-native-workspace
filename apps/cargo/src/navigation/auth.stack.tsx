@@ -6,16 +6,9 @@ import ResetPassword from '../screens/auth/Reset.screen';
 import SelectCountry from '../screens/auth/SelectCountry.screen';
 import VerifyOTP from '../screens/auth/Verify.screen';
 import Welcome from '../screens/auth/Welcome.screen';
+import CountryList from 'country-list-with-dial-code-and-flag'
+import { AuthStackParamList } from '@utils/cargo';
 
-export type AuthStackParamList = {
-  welcome: undefined;
-  login: undefined;
-  register: undefined;
-  select_country: undefined;
-  reset_password: undefined;
-  verify: undefined;
-  enable_location: undefined
-}
 
 
 const Stack = createStackNavigator<AuthStackParamList>();
@@ -31,7 +24,7 @@ export const AuthStack = () => {
       <Stack.Screen name="welcome" component={Welcome} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="login" component={Login} />
-        <Stack.Screen name="register" component={Register} />
+        <Stack.Screen name="register" component={Register} initialParams={{ dial_code: CountryList.getAll()[0].dial_code }} />
         <Stack.Screen name="select_country" component={SelectCountry} />
         <Stack.Screen name="reset_password" component={ResetPassword} />
         <Stack.Screen name="verify" component={VerifyOTP} />

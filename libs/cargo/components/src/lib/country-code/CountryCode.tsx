@@ -1,16 +1,14 @@
-
-import { Wrapper } from "./CountryCode.styled";
+import { Container } from "@shared-ui";
+import { Text } from "react-native";
 /* eslint-disable-next-line */
 export interface CountryCodeProps { }
-
 
 export function CountryCode(
 	props: CountryCodeProps
 ) {
 	return (
-		<Wrapper>
-			<h1>Welcome to CountryCode!</h1>
-		</Wrapper>
+		<Container row center>
+		</Container>
 	);
 }
 

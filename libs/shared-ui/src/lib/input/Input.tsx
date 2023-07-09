@@ -1,7 +1,7 @@
-import { Container } from '../container/Container';
-import React, { ReactNode, forwardRef } from 'react';
-import { TextInput, TouchableOpacity, View } from 'react-native';
+import React, { ReactNode } from 'react';
+import { TextInput, TouchableOpacity, View, TextInputProps } from 'react-native';
 import styled from 'styled-components/native';
+import { Container } from '../container/Container';
 
 /* eslint-disable-next-line */
 type InputProps = {
@@ -53,7 +53,6 @@ const LeftIcon = styled(Container)`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
 `;
 const RightButton = styled(TouchableOpacity)`
   display: flex;
@@ -62,8 +61,7 @@ const RightButton = styled(TouchableOpacity)`
 `;
 
 export function Input(
-  props: InputProps
-  //  ref?: React.Ref<TextInput>
+  props: InputProps & TextInputProps
 ) {
   const [toggleSecure, setToggleSecure] = React.useState(false);
 
@@ -116,4 +114,4 @@ export function Input(
   );
 }
 
-export default forwardRef(Input);
+export default Input;

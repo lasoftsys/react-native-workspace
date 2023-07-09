@@ -1,27 +1,23 @@
 /* eslint-disable react/style-prop-object */
 import { FontAwesome } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { Button, Container, Input } from '@shared-ui';
-import { AuthScreensProps } from '@utils/cargo';
-import React, { useState } from 'react';
+import { AuthScreensProps, AuthStackParamList } from '@utils/cargo';
+import React, { useEffect, useState } from 'react';
 import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text } from 'react-native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 
-
 type CodeProps = {
-  country: {
-    code?: string
-  };
-  setCountry?: () => void
+  code?: string;
+  setCode?: () => void
 }
 
-const CountryCode = ({ country, setCountry }: CodeProps) => {
+const CountryCode = ({ code, setCode }: CodeProps) => {
   const navigation = useNavigation<AuthScreensProps>()
   return (
     <Button onPress={() => navigation.navigate('select_country')}
       className='flex-row justify-center pt-0 pb-0' >
-      {/* <Image source={require('../../../assets/icons/apple.png')} style={{ height: 12, width: 12 }} /> */}
-      <Text className='text-dark font-medium text-sm mx-1'>+250</Text>
+      <Text className='text-dark font-medium text-sm mx-1'>{code}</Text>
       <FontAwesome name="angle-down" size={15} color="black" />
     </Button>
   )
@@ -29,7 +25,16 @@ const CountryCode = ({ country, setCountry }: CodeProps) => {
 
 const Register = () => {
   const navigation = useNavigation<AuthScreensProps>()
-  const [country, setCountry] = useState({ code: '+250' })
+  const { params } = useRoute<RouteProp<AuthStackParamList>>()
+  const [countryCode, setCountryCode] = useState(params?.dial_code)
+
+  useEffect(() => {
+    if (params?.dial_code) {
+      setCountryCode(params.dial_code)
+    }
+  }, [params?.dial_code])
+  
+  console.log(params)
   return (
     <Container
       flex={1}
@@ -72,7 +77,7 @@ const Register = () => {
             inputStyles={styles.inputStyles}
             wrapperStyles={{ ...styles.wrapperStyles, marginBottom: 20 }}
             phone
-            icon={<CountryCode country={country} />}
+            icon={<CountryCode code={countryCode} />}
           />
           <Input
             placeholder='Enter your password'

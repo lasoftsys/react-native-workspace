@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 /* eslint-disable-next-line */
 export interface StyleProps { }
 
-const Wrapper = styled.div`
-	color: pink;
+const Wrapper = styled.View<StyleProps>`
+	
 `;
 
 
