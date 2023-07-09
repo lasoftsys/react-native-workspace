@@ -21,7 +21,7 @@ const Welcome = () => {
       >
         <Container row center middle className="absolute bottom-0 left-0 w-screen h-44 pt-10">
           <Button
-            onPress={() => navigation.navigate('login')}
+            onPress={() => navigation.navigate('register')}
             className="bg-primary rounded-md py-2.5 w-28 z-10 mr-4"
           >
             <Text className="text-black text-center text-base">Sign up</Text>

@@ -49,7 +49,7 @@ const Login = () => {
           <Button onPress={() => navigation.navigate('reset_password')}
             className='w-auto self-end'
             customStyles={{ padding: 0 }}>
-            <Text className='text-primary font-medium text-sm font-nunito text-center'>
+            <Text className='text-primary font-normal text-sm font-nunito text-center'>
               Forgot Password
             </Text>
           </Button>
@@ -66,8 +66,8 @@ const Login = () => {
           </Text>
         </Button>
 
-        <Container flex={0.8} column center space='space-around'>
-          <Text className='text-sm font-normal font-nunito text-gray-500'>Or Sign in with social account</Text>
+        <Container flex={0.9} column center space='space-around'>
+          <Text className='text-sm font-normal font-nunito text-gray-500'>Or sign in with social account</Text>
           <Container row center middle>
             <Button
               onPress={() => navigation.navigate('login')}
@@ -87,7 +87,10 @@ const Login = () => {
           </Container>
           <Container row center middle>
             <Text className="text-dark text-center text-sm text-semibold mr-1">Don't have account ?</Text>
-            <Button onPress={() => navigation.navigate('reset_password')}
+            <Button onPress={() => {
+              navigation.goBack();
+              navigation.navigate('register');
+            }}
               className='w-auto self-end'
               customStyles={{ padding: 0 }}>
               <Text className='text-primary font-medium text-sm font-nunito text-center'>

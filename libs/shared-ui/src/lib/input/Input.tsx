@@ -14,9 +14,9 @@ type InputProps = {
   inputStyles?: React.CSSProperties;
   wrapperStyles?: React.CSSProperties;
   inputWrapperStyles?: React.CSSProperties;
-  number?: string;
-  email?: string;
-  phone?: number;
+  number?: boolean;
+  email?: boolean;
+  phone?: boolean;
   placeholder?: string
 };
 
