@@ -12,9 +12,9 @@ export type AppNavigatorParamList = {
 export type AuthStackParamList = {
   welcome: undefined;
   login: undefined;
-  register:{ dial_code:string};
+  register:{ dial_code?:string};
   select_country:undefined;
   reset_password: undefined;
   verify: undefined;
   enable_location: undefined
-}  
+}

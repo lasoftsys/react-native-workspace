@@ -15,6 +15,22 @@
 					"libs/cargo/components/**/*.{ts,tsx,js,jsx}"
 				]
 			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": [
+				"{workspaceRoot}/coverage/{projectRoot}"
+			],
+			"options": {
+				"jestConfig": "libs/cargo/components/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
 		}
 	}
 }

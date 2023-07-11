@@ -16,7 +16,7 @@
 		"baseUrl": ".",
 		"noImplicitAny": false,
 		"paths": {
-			"@components/cargo": [
+			"@cargo/components": [
 				"libs/cargo/components/src/index.ts"
 			],
 			"@shared-ui": [

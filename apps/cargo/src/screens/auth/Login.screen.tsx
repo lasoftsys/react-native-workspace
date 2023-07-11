@@ -51,7 +51,7 @@ const Login = () => {
         className='px-5 pt-2'
         customStyles={{ ...ifIphoneX({ paddingBottom: 20 }, { paddingBottom: 5 }) }}>
         <Button
-          onPress={() => navigation.navigate('main_stack' as never)}
+          onPress={() => navigation.navigate('verify')}
           className='bg-primary rounded-md'>
           <Text className='text-white text-base font-semibold'>
             Sign in

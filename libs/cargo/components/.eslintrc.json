@@ -3,7 +3,13 @@
 		"plugin:@nrwl/nx/react",
 		"../../../.eslintrc.json"
 	],
-	"ignorePatterns": ["!**/*"],
+	"ignorePatterns": [
+		"!**/*",
+		".expo",
+		"node_modules",
+		"web-build",
+		"cache"
+	],
 	"overrides": [
 		{
 			"files": [

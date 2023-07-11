@@ -58,7 +58,7 @@ const SelectCountry = () => {
     setCountries(CountryList.getAll())
   }, [])
 
-  const filteredCountries = countries.filter((cnt) => cnt.name.toLowerCase().includes(searchValue.toLowerCase()));
+  // const filteredCountries = countries.filter((cnt) => cnt.name.toLowerCase().includes(searchValue.toLowerCase()));
 
   return (
     <Container
@@ -66,7 +66,7 @@ const SelectCountry = () => {
     >
       <Container className='absolute top-2 w-12 h-1.5 self-center bg-gray-700 rounded-md mt-1 z-10' />
 
-      <Container flex={0.4} column className='justify-around px-5 pt-5'>
+      <Container flex={0.15} column className='justify-around px-5 pt-5'>
         <Text className='text-xl font-bold font-nunito text-dark mb-1.5'>Select a country</Text>
 
         <Controller
@@ -88,7 +88,7 @@ const SelectCountry = () => {
           rules={{ required: true }}
         />
       </Container>
-      <Container flex={0.6} className='px-6 pt-2'>
+      <Container flex={0.85} className='px-6 pt-2'>
         <FlatList data={countries}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => <Item name={item.name} dial_code={item.dial_code}

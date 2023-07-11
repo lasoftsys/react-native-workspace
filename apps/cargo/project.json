@@ -30,7 +30,11 @@
     },
     "build": {
       "executor": "@nrwl/expo:build",
-      "options": {}
+      "options": {
+        "postcssConfig": "apps/cargo/postcss.config.js",
+        "assets":["apps/cargo/assets"]
+      }
+
     },
     "build-list": {
       "executor": "@nrwl/expo:build-list",
