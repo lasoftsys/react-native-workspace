@@ -6,6 +6,22 @@ export type AppNavigatorParamList = {
     main_stack: undefined;
   }
 
+
+ /**
+  * type for drawer navigator
+  */ 
+export type DrawerNavigatorParamList={
+  Screens: undefined;
+}
+
+export type DrawerStackParamList={
+  home_stack: undefined;
+  trips_stack: undefined;
+  payment_stack: undefined;
+  Profile_stack: undefined;
+}
+
+
 /**
  * type for auth stack navigator stack
  */  

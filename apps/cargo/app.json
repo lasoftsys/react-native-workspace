@@ -4,7 +4,7 @@
     "slug": "cargo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon1.png",
     "plugins": [
       [
         "expo-build-properties",
@@ -12,6 +12,12 @@
           "ios": {
             "flipper": true
           }
+        }
+      ], 
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ]
     ],
@@ -28,7 +34,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.lasofts.cargo"
+      "bundleIdentifier": "com.lasofts.cargo",
+      "config":{
+        "googleMapsApiKey":"AIzaSyBRMBGXP6iI1K_Q6ox18UEAPYDjdQuhXJQ"
+      }
     },
     "android": {
       "softwareKeyboardLayoutMode": "pan",
@@ -36,7 +45,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.lasofts.cargo"
+      "package": "com.lasofts.cargo",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBRMBGXP6iI1K_Q6ox18UEAPYDjdQuhXJQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

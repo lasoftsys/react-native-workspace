@@ -1,24 +1,19 @@
-import { Container } from '@shared-ui';
-import React from 'react';
+import { AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Container, Button } from '@shared-ui';
 import { Image } from 'react-native';
+import React, { useState } from 'react';
 import { ifIphoneX } from "react-native-iphone-x-helper";
-// import Logo from 'asset/logos/icon.png'
+import TabButton from './TabButton';
+import { useNavigation } from '@react-navigation/native';
+import { DrawerScreenProps } from '@utils/cargo';
 
-/* eslint-disable-next-line */
-export interface DrawerContentProps {
-}
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
 
-export function DrawerContent(props: DrawerContentProps) {
-  // const [currentTab, setCurrentTab] = useState("Home");
-  // const { user } = useSelector(({ User }) => User);
-  // const insets = useSafeAreaInsets();
-  // const dispatch = useDispatch();
-
-  // const handle_logout = async () => {
-  //   await SecureStore.deleteItemAsync(AUTH_KEY);
-  //   dispatch(setCredentials({ user: null, token: null }));
-  // };
+export function DrawerContent() {
+  const [currentTab, setCurrentTab] = useState<string>("home_stack");
+  const navigation = useNavigation<DrawerScreenProps>()
   return (
     <Container className='h-screen'>
       <Container
@@ -26,87 +21,73 @@ export function DrawerContent(props: DrawerContentProps) {
         row
         className="pt-12 w-full"
       >
-        <Container row center customStyles={{ width: "100%" }} bgColor='red'>
+        <Container row space='flex-end'
+          className='pt-1'
+          customStyles={{ width: "100%" }}
+        >
           <Container
             customStyles={{
-              height: 50,
-
-              width: 50,
+              height: 70,
+              width: 70,
             }}
           >
-            {/* <Image
-              // source={''}
-              style={{ flex: 1, height: '100%', width: "100%" }} /> */}
+            <Image
+              source={require('../../assets/cargo-logo-black.png')}
+              style={{
+                flex: 1,
+                width: '100%',
+              }}
+              resizeMode='contain' />
           </Container>
-        </Container >
-      </Container >
+        </Container>
+      </Container>
 
-      <Container Container className='grow mt-12 px-4' >
+      <Container className='grow flex-col pt-12 pr-1 items-end'>
+        <TabButton
+          currentTab={currentTab}
+          title='home_stack'
+          icon={<AntDesign name="home" size={26} color={currentTab === 'home_stack' ? "#01303c" : "#313131"} />}
+          onPress={() => {
+            navigation.navigate('home_stack')
+            setCurrentTab('home_stack')
+          }}
+        />
+        <TabButton
+          currentTab={currentTab}
+          title='trips_stack'
+          icon={<MaterialIcons size={28} name="history-toggle-off" color={currentTab === 'trips_stack' ? "#01303c" : "#313131"} />}
+          onPress={() => {
+            setCurrentTab('trips_stack')
+            navigation.navigate('trips_stack')
+          }}
+        />
+        <TabButton
+          currentTab={currentTab}
+          title='payment_stack'
+          icon={<MaterialIcons size={26} name="payments" color={currentTab === 'payment_stack' ? "#01303c" : "#313131"} />}
+          onPress={() => {
+            setCurrentTab('payment_stack')
+            navigation.navigate('payment_stack')
+          }}
+        />
+      </Container>
 
-        {/* {TabButton(
-          currentTab,
-          setCurrentTab,
-          "Home",
-          <AntDesign name="home" size={20} color="#838589" />,
-          () => {
-            props.navigation.navigate(AppRoutes.BOTTOM_NAV);
-          }
-        )}
-
-        {TabButton(
-          currentTab,
-          setCurrentTab,
-          "Profile",
-          <AntDesign name="user" size={20} color="#838589" />,
-          () => {
-            // props.navigation.navigate("ACCOUNT STACK", {
-            //   Screen: "PROFILE SCREEN",
-            // });
-          }
-        )}
-        {TabButton(
-          currentTab,
-          setCurrentTab,
-          "LogOut",
-          <AntDesign name="logout" size={18} color="#838589" />,
-          () => {
-            props.navigation.navigate(AppRoutes.SIGN_IN);
-            handle_logout();
-          }
-        )} */}
-      </Container >
-
-      {/* <Container column className='justify-center px-5 pt-3'
+      <Container row center
+        space='flex-end'
         customStyles={{
-          borderTopColor: "#838589",
-          borderTopWidth: 0.3,
-          ...ifIphoneX({ paddingBottom: 20 }, { paddingBottom: 10 }),
+          ...ifIphoneX({ marginBottom: 10 }, { marginBottom: 40 }),
         }}>
-
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: "700",
-            // lineHeight: 28,
-            color: "#313131",
-            fontFamily: "DMSans_700Bold",
-            letterSpacing: 0.12,
-            marginBottom: 5,
+        <Button
+          className="flex-row items-center justify-center p-0 h-14 w-14 rounded-xl mb-3"
+          customStyles={{ backgroundColor: "rgba(3,109,137,.4)" }}
+          onPress={() => {
+            console.log('Profile_stack')
+            navigation.navigate('Profile_stack')
           }}
         >
-          Cargo passenger
-        </Text>
-        <Text
-          style={{
-            fontSize: 14,
-            // fontWeight: "400",
-            color: "#838589",
-            letterSpacing: 0.12,
-          }}
-        >
-          App Version 1.0
-        </Text>
-      </Container> */}
+          <MaterialCommunityIcons name="face-man-profile" size={30} color="black" />
+        </Button>
+      </Container>
 
     </Container >
   );

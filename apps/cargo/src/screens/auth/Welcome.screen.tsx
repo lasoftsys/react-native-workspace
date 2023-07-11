@@ -24,10 +24,10 @@ const Welcome = () => {
         source={require('../../../assets/images/welcome.png')}
         placeholder={blurhash}
         contentFit="cover"
-        transition={1000} />
+        transition={500} />
       <Container row center middle className="absolute bottom-0 left-0 w-screen h-44 pt-10">
         <Button
-          onPress={() => navigation.navigate('register')}
+          onPress={() => navigation.navigate('register' as never)}
           className="bg-primary rounded-md py-2.5 w-28 z-10 mr-4"
         >
           <Text className="text-black text-center text-base">Sign up</Text>

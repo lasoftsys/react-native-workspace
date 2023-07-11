@@ -11,7 +11,10 @@ export const HomeStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {},
+        cardStyle: {
+          // backgroundColor: 'yellow',
+          // borderRadius: 10
+        },
       }}
     >
       <Stack.Screen name="home" component={Home} />

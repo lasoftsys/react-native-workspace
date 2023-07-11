@@ -2,18 +2,19 @@
 import { DrawerContent } from '@cargo/components';
 import { createDrawerNavigator, useDrawerStatus } from '@react-navigation/drawer';
 import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/stack";
-import { Container } from '@shared-ui';
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Animated, StyleSheet, View } from 'react-native';
-import { HomeStack } from './home.stack';
 import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import { HomeStack } from './home.stack';
+import { TripStack } from './trip.stack';
+import { PaymentStack } from './payment.stack';
+import { ProfileStack } from './profile.stack';
+import { DrawerNavigatorParamList, DrawerStackParamList } from '@utils/cargo';
 
+const Drawer = createDrawerNavigator<DrawerNavigatorParamList>();
+const Stack = createStackNavigator<DrawerStackParamList>();
 
-
-const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
-
-const Screens = ({ navigation, progress, style }) => {
+const Screens = () => {
   // Animated Properties...
   const isDrawerOpen = useDrawerStatus() === "open";
   const offsetValue = useRef(new Animated.Value(0)).current;
@@ -43,13 +44,13 @@ const Screens = ({ navigation, progress, style }) => {
     <Animated.View
       style={{
         flexGrow: 1,
-        backgroundColor: "rgba(242,242,242,255)",
+        backgroundColor: "transparent",
         position: "absolute",
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
-        borderRadius: 16,
+        borderRadius: 10,
         // Transforming View...
         transform: [{ scale: scaleValue }, { translateX: offsetValue }],
       }}
@@ -57,12 +58,32 @@ const Screens = ({ navigation, progress, style }) => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          cardStyle: {},
         }}
       >
         <Stack.Screen
           name='home_stack'
           component={HomeStack}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name='trips_stack'
+          component={TripStack}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name='payment_stack'
+          component={PaymentStack}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        />
+        <Stack.Screen
+          name='Profile_stack'
+          component={ProfileStack}
           options={{
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
           }}
@@ -80,23 +101,25 @@ export const DrawerNavigator = () => {
           drawerType: "slide",
           overlayColor: "transparent",
           drawerContentContainerStyle: {
-            flex: 1
+            flex: 1,
           },
           sceneContainerStyle: {
-            backgroundColor: "transparent"
+            backgroundColor: "transparent",
+            borderRadius: 10
           },
           drawerActiveBackgroundColor: "transparent",
-          drawerInactiveTintColor: "white",
-          drawerActiveTintColor: "white",
+          // drawerInactiveTintColor: "white",
+          // drawerActiveTintColor: "white",
           drawerStyle: {
             backgroundColor: 'transparent',
             //  '#c6cbef',
             width: wp(20),
+
           },
         }}
         drawerContent={(props) => {
           //   setProgress(props.progress);
-          return <DrawerContent {...props} />;
+          return <DrawerContent />;
         }}
       >
         <Drawer.Screen
@@ -105,7 +128,7 @@ export const DrawerNavigator = () => {
             headerShown: false,
           }}
         >
-          {(props) => <Screens {...props} />}
+          {(props) => <Screens />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </View>
@@ -113,16 +136,11 @@ export const DrawerNavigator = () => {
   );
 };
 
-{/* <Drawer.Screen name="Profile_stack" component={ProfileStack} />
-<Drawer.Screen name="home_stack" component={HomeStack} />
-<Drawer.Screen name="trips_stack" component={TripStack} />
-<Drawer.Screen name="payment_stack" component={PaymentStack} /> */}
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E3E8F2",
+    backgroundColor: "#41D5FB",
   },
   stack: {
     flex: 1,
