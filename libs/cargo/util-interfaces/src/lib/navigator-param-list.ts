@@ -1,3 +1,4 @@
+import { PaymentStack } from './../../../../../apps/cargo/src/navigation/payment.stack';
 /**
  * type for the App stack navigator
  */
@@ -33,4 +34,13 @@ export type AuthStackParamList = {
   reset_password: undefined;
   verify: undefined;
   enable_location: undefined
+}
+
+/***
+ * type for payment stack navigator
+ */
+
+export type PaymentStackParamList={
+  payment:undefined;
+  add_card:undefined
 }

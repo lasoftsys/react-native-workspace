@@ -1,4 +1,8 @@
 
+export * from './lib/card-details/CardDetails';
+
+export * from './lib/payment-methods/PaymentMethods';
+
 export * from './lib/page-wrapper/PageWrapper';
 
 export * from './lib/drawer-button/DrawerButton';

@@ -1,2 +1,3 @@
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
-export const HEADER_HEIGHT = 120;
+export const HEADER_HEIGHT = hp(12);
