@@ -9,7 +9,7 @@ export const TripStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {},
+        cardStyle: { backgroundColor: '#E3E8F2' },
       }}
     >
       <Stack.Screen name="trip" component={Trip} />

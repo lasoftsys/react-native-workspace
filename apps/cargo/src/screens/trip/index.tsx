@@ -1,25 +1,38 @@
-import { DrawerButton, Header, PageWrapper } from '@cargo/components';
+import { DrawerButton, Header, PageWrapper, TripHistory } from '@cargo/components';
+import { Container, Button } from '@shared-ui';
 import { HEADER_HEIGHT } from '@utils/cargo';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef } from 'react';
 import {
-  Animated, Text, Platform
+  Animated,
+  Platform,
+  Text
 } from "react-native";
-import { Container } from '@shared-ui';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { Fontisto } from '@expo/vector-icons';
 
-const HEIGHT = Platform.OS === 'ios' ? HEADER_HEIGHT + hp(5) : HEADER_HEIGHT + hp(3)
+
+const HEIGHT = Platform.OS === 'ios' ? HEADER_HEIGHT + hp(4) : HEADER_HEIGHT + hp(2)
 const Trip = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
+
 
   const renderHeaderContent = (
     <Container column space='space-between' className='w-full h-full px-5 pb-3'>
       <Container row center space='space-between'>
         <DrawerButton />
+        <Text className='text-xl font-bold font-nunito text-dark'>My Rides</Text>
+        <Button
+          className='w-auto'
+          bgColor='#FB4A46'
+          customStyles={{ padding: 0 }} >
+          <Fontisto name="date" size={28} color="black" />
+        </Button>
       </Container>
-      <Text className='text-xl font-bold font-nunito text-dark'>My Trips</Text>
     </Container>
   )
+
+
   return (
     <>
       <StatusBar style='dark' />
@@ -30,6 +43,7 @@ const Trip = () => {
           bgColor="#fff" >
           {renderHeaderContent}
         </Header>
+        <TripHistory />
       </PageWrapper>
     </>
   );

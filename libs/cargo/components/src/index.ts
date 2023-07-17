@@ -1,4 +1,8 @@
 
+export * from './lib/trip-card/TripCard';
+
+export * from './lib/trip-history/TripHistory';
+
 export * from './lib/card-details/CardDetails';
 
 export * from './lib/payment-methods/PaymentMethods';
