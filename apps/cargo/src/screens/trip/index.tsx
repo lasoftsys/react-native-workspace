@@ -26,7 +26,7 @@ const Trip = () => {
           className='w-auto'
           bgColor='#FB4A46'
           customStyles={{ padding: 0 }} >
-          <Fontisto name="date" size={28} color="black" />
+          <Fontisto name="date" size={26} color="black" />
         </Button>
       </Container>
     </Container>
